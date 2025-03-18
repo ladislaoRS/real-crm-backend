@@ -26,12 +26,9 @@ class ContactResource extends JsonResource
             'region' => $this->region,
             'country' => $this->country,
             'postal_code' => $this->postal_code,
-            'organization' => $this->when($this->organization, function () {
-                return [
-                    'id' => $this->organization->id,
-                    'name' => $this->organization->name,
-                ];
-            }),
+            'status' => $this->status,
+            'status_notes' => $this->status_notes,
+            'status_updated_at' => $this->status_updated_at ? $this->status_updated_at->toIso8601String() : null,
             'deleted_at' => $this->when($this->deleted_at, $this->deleted_at),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

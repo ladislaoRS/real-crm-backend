@@ -19,12 +19,11 @@ class ContactApiController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = $request->all('search', 'trashed');
+        $filters = $request->all('search', 'trashed', 'status');
 
         $contacts = Contact::query()
-            ->with('organization')
             ->filter($filters)
-            ->orderByName()
+            ->orderByDesc('created_at')
             ->paginate(10)
             ->withQueryString();
 
