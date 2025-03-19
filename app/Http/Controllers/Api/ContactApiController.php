@@ -62,6 +62,8 @@ class ContactApiController extends Controller
             'region' => ['nullable', 'max:50'],
             'country' => ['nullable', 'max:2'],
             'postal_code' => ['nullable', 'max:25'],
+            'status' => ['nullable', 'max:25'],
+            'status_notes' => ['nullable', 'max:255']
         ]);
 
         // Add the current account_id to the contact data
@@ -94,6 +96,8 @@ class ContactApiController extends Controller
             'region' => ['nullable', 'max:50'],
             'country' => ['nullable', 'max:2'],
             'postal_code' => ['nullable', 'max:25'],
+            'status' => ['nullable', 'max:25'],
+            'status_notes' => ['nullable', 'max:255']
         ]);
 
         $contact->update($validated);
