@@ -38,10 +38,7 @@ class Contact extends Model
             $query->where(function ($query) use ($search) {
                 $query->where('first_name', 'like', '%'.$search.'%')
                     ->orWhere('last_name', 'like', '%'.$search.'%')
-                    ->orWhere('email', 'like', '%'.$search.'%')
-                    ->orWhereHas('organization', function ($query) use ($search) {
-                        $query->where('name', 'like', '%'.$search.'%');
-                    });
+                    ->orWhere('email', 'like', '%'.$search.'%');
             });
         })->when($filters['trashed'] ?? null, function ($query, $trashed) {
             if ($trashed === 'with') {
@@ -49,6 +46,8 @@ class Contact extends Model
             } elseif ($trashed === 'only') {
                 $query->onlyTrashed();
             }
+        })->when($filters['status'] ?? null, function ($query, $status) {
+            $query->where('status', $status);
         });
     }
 }
