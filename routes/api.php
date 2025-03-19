@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ContactApiController;
+use App\Http\Controllers\Api\DashboardApiController;
 use App\Http\Controllers\Api\TokenAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Contacts API endpoints
     Route::apiResource('contacts', ContactApiController::class);
     Route::put('/contacts/{contact}/restore', [ContactApiController::class, 'restore'])->name('contacts.restore');
+
+    // Dashboard routes
+    Route::get('/dashboard/stats', [DashboardApiController::class, 'getStats']);
 });
