@@ -63,7 +63,7 @@ class ContactsTest extends TestCase
                 ->has('contacts.data.0', fn (Assert $assert) => $assert
                     ->has('id')
                     ->where('name', 'Martin Abbott')
-                    ->where('phone', '555-111-2222')
+                    ->where('phone', '(555)-111-2222')
                     ->where('city', 'Murphyland')
                     ->where('deleted_at', null)
                     ->has('organization', fn (Assert $assert) => $assert
@@ -73,7 +73,7 @@ class ContactsTest extends TestCase
                 ->has('contacts.data.1', fn (Assert $assert) => $assert
                     ->has('id')
                     ->where('name', 'Lynn Kub')
-                    ->where('phone', '555-333-4444')
+                    ->where('phone', '(555)-333-4444')
                     ->where('city', 'Woodstock')
                     ->where('deleted_at', null)
                     ->has('organization', fn (Assert $assert) => $assert
@@ -94,7 +94,7 @@ class ContactsTest extends TestCase
                 ->has('contacts.data.0', fn (Assert $assert) => $assert
                     ->has('id')
                     ->where('name', 'Martin Abbott')
-                    ->where('phone', '555-111-2222')
+                    ->where('phone', '(555)-111-2222')
                     ->where('city', 'Murphyland')
                     ->where('deleted_at', null)
                     ->has('organization', fn (Assert $assert) => $assert

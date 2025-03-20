@@ -50,4 +50,25 @@ class Contact extends Model
             $query->where('status', $status);
         });
     }
+
+    /**
+     * Mutator: Ensure phone number is always stored in (###)-###-#### format.
+     */
+    public function setPhoneAttribute($value)
+    {
+        // Remove any non-numeric characters
+        $digits = preg_replace('/\D/', '', $value);
+
+        // Ensure the phone number has exactly 10 digits before formatting
+        if (strlen($digits) === 10) {
+            $formattedPhone = sprintf('(%s)-%s-%s',
+                substr($digits, 0, 3),
+                substr($digits, 3, 3),
+                substr($digits, 6, 4)
+            );
+            $this->attributes['phone'] = $formattedPhone;
+        } else {
+            $this->attributes['phone'] = $value; // Store as-is if invalid
+        }
+    }
 }
