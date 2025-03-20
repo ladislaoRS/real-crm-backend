@@ -86,7 +86,6 @@ class ContactApiFeatureTest extends TestCase
                     'email',
                     'phone',
                     'city',
-                    'organization',
                 ]
             ],
             'links',
@@ -123,10 +122,6 @@ class ContactApiFeatureTest extends TestCase
                 'first_name' => 'John',
                 'last_name' => 'Doe',
                 'name' => 'John Doe',
-                'organization' => [
-                    'id' => $this->organization->id,
-                    'name' => 'Acme Inc.',
-                ],
             ]
         ]);
     }
