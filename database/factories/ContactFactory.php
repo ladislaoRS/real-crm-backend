@@ -19,6 +19,11 @@ class ContactFactory extends Factory
             'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
         ];
 
+        $statusList = [
+            'New', 'Initiated', 'Submitted', 'In Review',
+            'Approved', 'Rejected', 'Assigned', 'Finalized'
+        ];
+
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
@@ -28,6 +33,8 @@ class ContactFactory extends Factory
             'city' => $this->faker->city(),
             'region' => $this->faker->randomElement($usStates), // US state abbreviation
             'country' => 'US',
+            'status' => $this->faker->randomElement($statusList), // Random status from the list
+            'status_notes' => $this->faker->sentence(),
             'postal_code' => $this->faker->postcode(),
             'created_at' => $this->faker->dateTimeBetween('-2 months', 'now'),
         ];
